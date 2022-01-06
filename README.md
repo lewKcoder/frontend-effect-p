@@ -1,1 +1,5 @@
-# p-frontend-effect
+## For practing effects.
+- GSAP
+- SCSS
+- JavaScript<br>
+etc.
