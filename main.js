@@ -23,3 +23,8 @@ document.addEventListener('mousemove', (event) => {
     y: event.pageY - 20,
   });
 });
+
+gsap.to('.return-logo', {
+  css: { rotateY: 360 },
+  duration: 3,
+});

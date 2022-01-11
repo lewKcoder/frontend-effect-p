@@ -27,6 +27,14 @@ html {
   height: 100%;
 }
 
+.return-logo {
+  width: 80px;
+  height: 80px;
+}
+.return-logo img {
+  width: 100%;
+}
+
 .shadow {
   width: 100px;
   height: 20px;
