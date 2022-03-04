@@ -1,8 +1,16 @@
 html {
   /* cursor: none; */
   position: relative;
+  /* color: green; */
 }
 
+:root {
+  --main-color: #666;
+}
+.lists {
+  --main-color: redfwe;
+}
+/* 
 .title {
   overflow: hidden;
   text-align: center;
@@ -64,3 +72,93 @@ html {
   border-radius: 50%;
   border: 5px solid #4e4e4e;
 }
+
+.cards {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+.cards .card {
+  width: 30%;
+}
+.cards .card img {
+  width: 100%;
+  height: auto;
+}
+.cards .card button {
+  border: 1px solid #000;
+} */
+
+/* .title {
+  color: var(--main-color);
+  text-align: center;
+}
+.sub-title {
+  color: var(--main-color);
+  text-align: center;
+  padding: 0 0 16px;
+  margin: 0 20% 24px;
+  border-bottom: 3px solid;
+}
+.lists {
+  width: 80%;
+  margin: auto;
+  border: 1px solid var(--main-color);
+  border-radius: 6px;
+  padding: 24px;
+  list-style: none;
+}
+.lists .list {
+  padding: 0 0 8px;
+  margin: 0 0 8px;
+  border-bottom: 1px solid var(--main-color);
+}
+.lists .list .button {
+  border: 3px solid var(--main-color);
+  color: var(--main-color, red);
+  border-radius: 6px;
+  padding: 4px 8px;
+} */
+
+/* button {
+  padding: 4px 8px;
+  border: 1px solid #000;
+  color: #000;
+}
+button:hover {
+  color: #fff;
+  background-color: #000;
+}
+.primary {
+  border: 1px solid #0dcaf0;
+}
+.primary:hover {
+  background-color: #0dcaf0;
+} */
+
+.button-wrapper {
+  margin: 16px;
+  display: inline-block;
+}
+
+button {
+  --button-initial-color: #000;
+  border: 1px solid var(--custom-color, var(--button-initial-color));
+  color: var(--custom-color, var(--button-initial-color));
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+button:hover {
+  color: #fff;
+  background-color: var(--custom-color, var(--button-initial-color));
+}
+.primary {
+  --custom-color: #0dcaf0;
+}
+.danger {
+  --custom-color: #d95f6b;
+}
+.warning {
+  --custom-color: #edbf34;
+}
+
