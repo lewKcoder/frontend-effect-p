@@ -120,53 +120,52 @@ html {
   padding: 4px 8px;
 } */
 
-button {
+/* button {
   border: 1px solid #000;
+  border-radius: 4px;
   color: #000;
   padding: 8px 12px;
-  border-radius: 4px;
 }
 button:hover {
-  color: #fff;
   background-color: #000;
+  color: #fff;
 }
 .primary {
-  color: #0dcaf0;
   border: 1px solid #0dcaf0;
+  color: #0dcaf0;
 }
 .primary:hover {
   background-color: #0dcaf0;
 }
 .danger {
-  color: #d95f6b;
   border: 1px solid #d95f6b;
+  color: #d95f6b;
 }
 .danger:hover {
   background-color: #d95f6b;
 }
 .warning {
-  color: #edbf34;
   border: 1px solid #edbf34;
+  color: #edbf34;
 }
 .warning:hover {
   background-color: #edbf34;
-}
+} */
 
 .button-wrapper {
-  margin: 16px;
   display: inline-block;
+  margin: 16px;
 }
 
-/* button {
-  --button-initial-color: #000;
-  border: 1px solid var(--custom-color, var(--button-initial-color));
-  color: var(--custom-color, var(--button-initial-color));
+button {
+  border: 1px solid var(--custom-color, #000);
+  color: var(--custom-color, #000);
   padding: 8px 12px;
   border-radius: 4px;
 }
 button:hover {
   color: #fff;
-  background-color: var(--custom-color, var(--button-initial-color));
+  background-color: var(--custom-color, #000);
 }
 .primary {
   --custom-color: #0dcaf0;
@@ -176,7 +175,7 @@ button:hover {
 }
 .warning {
   --custom-color: #edbf34;
-} */
+}
 
 
 カスタムプロパティの宣言は、ハイフン2個（--）で始まる任意のプロパティ名と保持したい値を記述することでできます。
@@ -225,8 +224,8 @@ element {
 } */
 
 この場合被った時点で内容は上書きされます。
+--main-colorの値は親から子へと継承されていくので、
 タイトル下のul要素から赤色になっているのが確認できます。
-継承をうまく活用すると、さらにコードを短縮できます。
 
 代替値
 var()で指定したカスタムプロパティ自体が定義されていない場合の代替値を定義することができます。
@@ -276,4 +275,69 @@ IEはもう時期サポートが終わるみたいなのでフル無視の場合
 
 
 発展
-先ほど継承をうまく活用すればコード量を減らせると言いました。
+継承と代替値の仕組みをうまく活用すればコード量を減らせます。
+/* <button>BUTTON</button>
+<button class="primary">BUTTON</button>
+<button class="danger">BUTTON</button>
+<button class="warning">BUTTON</button> */
+クラスによってボタンの色を変えたい場合。
+/* button {
+  border: 1px solid #000;
+  border-radius: 4px;
+  color: #000;
+  padding: 8px 12px;
+}
+button:hover {
+  background-color: #000;
+  color: #fff;
+}
+.primary {
+  border: 1px solid #0dcaf0;
+  color: #0dcaf0;
+}
+.primary:hover {
+  background-color: #0dcaf0;
+}
+.danger {
+  border: 1px solid #d95f6b;
+  color: #d95f6b;
+}
+.danger:hover {
+  background-color: #d95f6b;
+}
+.warning {
+  border: 1px solid #edbf34;
+  color: #edbf34;
+}
+.warning:hover {
+  background-color: #edbf34;
+} */
+このcssをあてることでクラスによってそれぞれ色の違うボタンができます。
+ですが、重複している記述が多いことに注目してください。
+ただクラスによって色を変えているだけなのに十数行も使っています。
+これを避けるためにカスタムプロパティを使ってみましょう。
+/* button {
+  border: 1px solid var(--custom-color, #000);
+  color: var(--custom-color, #000);
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+button:hover {
+  color: #fff;
+  background-color: var(--custom-color, #000);
+}
+.primary {
+  --custom-color: #0dcaf0;
+}
+.danger {
+  --custom-color: #d95f6b;
+}
+.warning {
+  --custom-color: #edbf34;
+} */
+これだけですが、上記と全く同じデザインになります。
+/* var(--custom-color, #000) */
+で--custom-colorが定義されていなければ、代替値の黒色をセットするようにしています。
+--custom-color自体は指定クラスのセレクター内で定義しているので、クラスが存在していれば--custom-color
+が宣言されて各々の色がセットされるようになっています。
+とても見やすくなりましたね。
